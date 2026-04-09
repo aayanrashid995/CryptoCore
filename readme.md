@@ -1,0 +1,73 @@
+
+# CryptoCore: Post-Quantum Threat Simulator & Library
+
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-Phase_1_(Active)-orange)
+
+## 📌 Overview
+CryptoCore is an ongoing exploration of Post-Quantum Cryptography (PQC) and the ethical implications of modern data security. It serves as both a simulator for emerging cryptographic threats and a foundation for implementing quantum-resistant algorithms.
+
+Currently, the project focuses on simulating the **"Harvest Now, Decrypt Later" (HNDL)** threat model, demonstrating the vulnerability of classical encryption (like RSA-2048) to future quantum hardware.
+
+## ⚠️ The Problem: "Harvest Now, Decrypt Later"
+We are currently in a critical cryptographic transition period. While classical encryption algorithms are secure against modern supercomputers, they are fundamentally vulnerable to Shor's Algorithm running on a sufficiently powerful Cryptographically Relevant Quantum Computer (CRQC). 
+
+State-sponsored actors and advanced persistent threats (APTs) are actively executing HNDL attacks. They intercept and store heavily encrypted, high-value data today with the intention of decrypting it a decade from now when quantum hardware matures. 
+
+**The Ethical Dilemma:** If highly sensitive data has a required secrecy lifespan of 20 years, but a CRQC arrives in 10 years, that data is already compromised today.
+
+## 🗺️ Project Roadmap
+
+### Phase 1: Threat Simulation (Current)
+- [x] Classical RSA-2048 key generation.
+- [x] Mock interception and storage of ciphertext (HNDL simulation).
+- [x] Quantum vulnerability assessment and logical qubit estimation.
+
+### Phase 2: Quantum-Resistant Implementation (Upcoming)
+- [ ] Transition from Python prototyping to C++ for performance optimization.
+- [ ] Implementation of simplified Lattice-based cryptography primitives.
+- [ ] Demonstration of the Learning With Errors (LWE) mathematical problem.
+
+### Phase 3: Hybrid Architecture (Upcoming)
+- [ ] Python bindings for optimized C++ cryptographic modules.
+- [ ] A hybrid CLI utility allowing simultaneous encryption with standard AES and a post-quantum algorithm.
+
+## ⚙️ Installation & Usage
+
+### Prerequisites
+* Python 3.8 or higher.
+* `cryptography` library.
+
+### Setup
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/aayanrashid995/CryptoCore.git](https://github.com/aayanrashid995/CryptoCore.git)
+   cd CryptoCore
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the simulator:**
+   ```bash
+   python harvest_simulator.py
+   ```
+
+## 🧮 Quantum Vulnerability Assessment: The Math
+To factor an integer representing an RSA public key using Shor's algorithm, a quantum computer requires a specific number of logical qubits. For a key size of `N` bits, the requirement is roughly `2N` logical qubits. 
+
+For standard RSA-2048:
+* **Target:** 4,096 logical qubits.
+* **Overhead:** Factoring in error correction (such as surface codes), this translates to millions of physical qubits. 
+
+While the hardware to achieve this does not exist today, the rapid acceleration of quantum research necessitates immediate transition strategies.
+
+## 🤝 Contributing
+This project is open for collaboration, especially in the areas of C++ optimization, lattice-based mathematical modeling, and documentation of cryptographic ethics. Feel free to open an issue or submit a pull request.
+
+## 📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+```
