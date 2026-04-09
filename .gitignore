@@ -1,0 +1,11 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local mock databases
+harvested_database.json
+
+# Virtual environments
+venv/
+env/
