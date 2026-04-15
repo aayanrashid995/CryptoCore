@@ -55,6 +55,20 @@ def quantum_vulnerability_estimate(key_size):
     print(f"Estimated Physical Qubits Required: ~{physical_qubits:,}")
     print("Verdict: Currently secure against classical attacks. Highly vulnerable to future quantum decryption.")
 
+    def ecc_vulnerability_estimate(curve_size=256):
+    """Calculates theoretical qubits needed to break ECC (e.g., secp256r1)."""
+    print("\n=== ECC Quantum Vulnerability Assessment ===")
+    
+    # Shor's algorithm for ECC requires roughly 6N logical qubits (where N is the curve size)
+    logical_qubits = 6 * curve_size
+    physical_qubits = logical_qubits * 1000 # Rough surface code estimate
+    
+    print("Threat Model: Shor's Algorithm (Discrete Logarithm)")
+    print(f"Target Architecture: ECC-{curve_size}")
+    print(f"Estimated Logical Qubits Required: {logical_qubits:,}")
+    print(f"Estimated Physical Qubits Required: ~{physical_qubits:,}")
+    print("Note: ECC requires significantly fewer qubits to break than RSA, making it an urgent quantum risk.")
+
 if __name__ == "__main__":
     print("=== CryptoCore: Post-Quantum Threat Simulator ===")
     
@@ -71,3 +85,6 @@ if __name__ == "__main__":
     
     # 4. Assess the future threat
     quantum_vulnerability_estimate(target_key_size)
+
+    # 5. Assess ECC vulnerability
+    ecc_vulnerability_estimate(256)
