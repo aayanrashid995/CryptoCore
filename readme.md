@@ -1,8 +1,5 @@
 Since you've added the **ECC vulnerability assessment** and the **argparse** functionality, your README needs to highlight these as technical milestones. 
 
-Here is the updated `README.md`. Notice that I've also updated the **"The Math"** section to include the comparison between RSA and ECC, as that demonstrates high-level cryptographic literacy to anyone viewing your profile.
-
-```markdown
 # CryptoCore: Post-Quantum Threat Simulator & Library
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
