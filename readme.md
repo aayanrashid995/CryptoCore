@@ -1,5 +1,3 @@
-Since you've added the **ECC vulnerability assessment** and the **argparse** functionality, your README needs to highlight these as technical milestones. 
-
 # CryptoCore: Post-Quantum Threat Simulator & Library
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
