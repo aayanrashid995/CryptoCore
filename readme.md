@@ -1,4 +1,8 @@
+Since you've added the **ECC vulnerability assessment** and the **argparse** functionality, your README needs to highlight these as technical milestones. 
 
+Here is the updated `README.md`. Notice that I've also updated the **"The Math"** section to include the comparison between RSA and ECC, as that demonstrates high-level cryptographic literacy to anyone viewing your profile.
+
+```markdown
 # CryptoCore: Post-Quantum Threat Simulator & Library
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
@@ -8,7 +12,7 @@
 ## 📌 Overview
 CryptoCore is an ongoing exploration of Post-Quantum Cryptography (PQC) and the ethical implications of modern data security. It serves as both a simulator for emerging cryptographic threats and a foundation for implementing quantum-resistant algorithms.
 
-Currently, the project focuses on simulating the **"Harvest Now, Decrypt Later" (HNDL)** threat model, demonstrating the vulnerability of classical encryption (like RSA-2048) to future quantum hardware.
+Currently, the project focuses on simulating the **"Harvest Now, Decrypt Later" (HNDL)** threat model, demonstrating the vulnerability of classical encryption (like RSA and ECC) to future quantum hardware.
 
 ## ⚠️ The Problem: "Harvest Now, Decrypt Later"
 We are currently in a critical cryptographic transition period. While classical encryption algorithms are secure against modern supercomputers, they are fundamentally vulnerable to Shor's Algorithm running on a sufficiently powerful Cryptographically Relevant Quantum Computer (CRQC). 
@@ -20,9 +24,10 @@ State-sponsored actors and advanced persistent threats (APTs) are actively execu
 ## 🗺️ Project Roadmap
 
 ### Phase 1: Threat Simulation (Current)
-- [x] Classical RSA-2048 key generation.
+- [x] Classical RSA and ECC vulnerability assessment.
 - [x] Mock interception and storage of ciphertext (HNDL simulation).
-- [x] Quantum vulnerability assessment and logical qubit estimation.
+- [x] Quantum vulnerability estimation based on Shor's Algorithm.
+- [x] Dynamic CLI inputs for variable key and curve sizes.
 
 ### Phase 2: Quantum-Resistant Implementation (Upcoming)
 - [ ] Transition from Python prototyping to C++ for performance optimization.
@@ -39,7 +44,7 @@ State-sponsored actors and advanced persistent threats (APTs) are actively execu
 * Python 3.8 or higher.
 * `cryptography` library.
 
-### Setup
+### Setup & Usage
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/aayanrashid995/CryptoCore.git](https://github.com/aayanrashid995/CryptoCore.git)
@@ -51,23 +56,40 @@ State-sponsored actors and advanced persistent threats (APTs) are actively execu
    pip install -r requirements.txt
    ```
 
-3. **Run the simulator:**
+3. **Run the simulator with default settings:**
    ```bash
    python harvest_simulator.py
    ```
 
+4. **Run with custom key sizes:**
+   ```bash
+   # Test against high-security RSA-4096 and ECC-384 targets
+   python harvest_simulator.py --rsa-size 4096 --ecc-size 384
+   ```
+
 ## 🧮 Quantum Vulnerability Assessment: The Math
-To factor an integer representing an RSA public key using Shor's algorithm, a quantum computer requires a specific number of logical qubits. For a key size of `N` bits, the requirement is roughly `2N` logical qubits. 
 
-For standard RSA-2048:
-* **Target:** 4,096 logical qubits.
-* **Overhead:** Factoring in error correction (such as surface codes), this translates to millions of physical qubits. 
+### RSA Vulnerability
+To factor an integer representing an RSA public key using Shor's algorithm, a quantum computer requires roughly $2N$ logical qubits for a key size of $N$ bits.
+* **RSA-2048:** ~4,096 logical qubits.
+* **Overhead:** With error correction (surface codes), this necessitates millions of physical qubits.
 
-While the hardware to achieve this does not exist today, the rapid acceleration of quantum research necessitates immediate transition strategies.
+### ECC Vulnerability (The Discrete Log Problem)
+Interestingly, Elliptic Curve Cryptography is more vulnerable to Shor’s algorithm than RSA. Breaking an ECC key of $N$ bits requires roughly $6N$ logical qubits. 
+* **ECC-256:** ~1,536 logical qubits.
+* **Takeaway:** Despite having "stronger" classical security per bit, ECC will likely fall to quantum computers sooner than RSA-2048. This project highlights why modern standards like TLS 1.3 and Bitcoin (Secp256k1) are at immediate risk from HNDL attacks.
 
 ## 🤝 Contributing
 This project is open for collaboration, especially in the areas of C++ optimization, lattice-based mathematical modeling, and documentation of cryptographic ethics. Feel free to open an issue or submit a pull request.
 
 ## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
+```
+
+### Git Command Recap
+If you haven't pushed this yet, do it now to keep your contribution graph active:
+```bash
+git add README.md
+git commit -m "docs: expand README with ECC math and dynamic CLI usage instructions"
+git push
 ```
