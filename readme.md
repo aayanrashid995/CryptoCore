@@ -81,10 +81,3 @@ This project is open for collaboration, especially in the areas of C++ optimizat
 This project is licensed under the MIT License - see the LICENSE file for details.
 ```
 
-### Git Command Recap
-If you haven't pushed this yet, do it now to keep your contribution graph active:
-```bash
-git add README.md
-git commit -m "docs: expand README with ECC math and dynamic CLI usage instructions"
-git push
-```
